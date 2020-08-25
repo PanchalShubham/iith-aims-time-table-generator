@@ -14,15 +14,17 @@ function main(){
 	for (var i = 1; i < programs.length; ++i){
 		var program = programs[i]
 		var regId = program.children[0].getAttribute("data-deg-dtl")
-		process(regId)
+		process(`.stdtDegReg_${regId}_1`)
+		process(`.stdtDegReg_${regId}_2`)
+		process(`.stdtDegReg_${regId}_3`)
 	}
 	parseTable()
 }
 main()
 	
 
-function process(regId){
-	var courses = $(`.stdtDegReg_${regId}_1`)
+function process(className){
+	var courses = $(className)
 	for (var i = 0; i < courses.length; ++i){
 		const course = courses[i]
 		if (course === undefined)	continue
