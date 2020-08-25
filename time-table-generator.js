@@ -172,30 +172,29 @@ function generateTable(timeTable){
 	const wednesday = timeTable['Wednesday']
 	const thursday = timeTable['Thursday']
 	const friday = timeTable['Friday']
-	let htmlText = "<table style='font-size: 15px;'>" + 
-						"<tr>" + 
-							"<td>" + '' + "</td>" + 
-							"<td>" + 'Monday' + "</td>" + 
-							"<td>" + 'Tuesday' + "</td>" + 
-							"<td>" + 'Wednesday' + "</td>" + 
-							"<td>" + 'Thursday' + "</td>" + 
-							"<td>" + 'Friday' + "</td>" +
-						"</tr>"
+	const days = ['Monday', 'Tuesday', 'Wednesday',
+					'Thursday', 'Friday']
 	let timings = ['09:00-09:55','10:00-10:55',
 					'11:00-11:55','12:00-12:55',
 					'14:30-15:55','16:00-17:25',
 					'18:00-19:25','19:30-21:00']
-	for (var i = 0; i < timings.length; ++i){
-		let time = timings[i]
-		htmlText = htmlText +
-						"<tr>" + 
-							"<td>" + time + "</td>" + 
-							"<td>" + monday[time] + "</td>" + 
-							"<td>" + tuesday[time] + "</td>" + 
-							"<td>" + wednesday[time] + "</td>" + 
-							"<td>" + thursday[time] + "</td>" + 
-							"<td>" + friday[time] + "</td>" + 
-						"</tr>"		
+	let htmlText = "<table style='font-size: 15px;'>" + 
+							"<tr>" + 
+								"<td>" + '' + "</td>"
+	for (var i = 0; i < timings.length; ++i)
+		htmlText = htmlText + 	"<td>" + timings[i] + "</td>"
+	htmlText = htmlText + 	"</tr>"
+
+	for (var i = 0; i < days.length; ++i){
+		let day = days[i]
+		schedule = timeTable[day]
+		htmlText = htmlText + "<tr>"
+		htmlText = htmlText + "<td>" + day + "</td>"
+		for (var j = 0; j < timings.length; ++j){
+			let timing = timings[j]
+			htmlText = htmlText + "<td>" + schedule[timing] + "</td>"
+		}
+		htmlText = htmlText + "</tr>"		
 	}
 	htmlText = htmlText + 
 					"</table>" + 
