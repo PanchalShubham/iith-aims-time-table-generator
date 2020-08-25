@@ -180,16 +180,16 @@ function generateTable(timeTable){
 					'18:00-19:25','19:30-21:00']
 	let htmlText = "<table style='font-size: 15px;'>" + 
 							"<tr>" + 
-								"<td>" + '' + "</td>"
+								"<td style='background-color: #E2E3E5'>" + '' + "</td>"
 	for (var i = 0; i < timings.length; ++i)
-		htmlText = htmlText + 	"<td>" + timings[i] + "</td>"
+		htmlText = htmlText + 	"<td style='background-color: #E2E3E5'>" + timings[i] + "</td>"
 	htmlText = htmlText + 	"</tr>"
 
 	for (var i = 0; i < days.length; ++i){
 		let day = days[i]
 		schedule = timeTable[day]
 		htmlText = htmlText + "<tr>"
-		htmlText = htmlText + "<td>" + day + "</td>"
+		htmlText = htmlText + "<td style='background-color: #E2E3E5'>" + day + "</td>"
 		for (var j = 0; j < timings.length; ++j){
 			let timing = timings[j]
 			htmlText = htmlText + "<td>" + schedule[timing] + "</td>"
