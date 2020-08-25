@@ -1,7 +1,3 @@
-/* ******************************************************
- * Created on Mon Aug 24 2020
- * Author: Shubham Panchal (cs18btech11052@iith.ac.in)
- ******************************************************* */
 
 'use-strict';
 
@@ -213,11 +209,6 @@ function process(className) {
 }
 
 function generateTable(timeTable) {
-  const monday = timeTable.Monday;
-  const tuesday = timeTable.Tuesday;
-  const wednesday = timeTable.Wednesday;
-  const thursday = timeTable.Thursday;
-  const friday = timeTable.Friday;
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   const timings = [
     '09:00-09:55',
