@@ -60,7 +60,7 @@ function createSegmentTable() {
 let oneTwoSegmentTable = createSegmentTable();
 let threeFourSegmentTable = createSegmentTable();
 let fiveSixSegmentTable = createSegmentTable();
-const errorMessages = [];
+let errorMessages = [];
 
 function addClass(timeTable, day, classTime, cellText) {
   for (let i = 0; i < classTime.length; ++i) {
