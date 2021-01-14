@@ -1,4 +1,3 @@
-
 'use-strict';
 
 function createSegmentTable() {
@@ -288,6 +287,46 @@ function parseTable() {
   newWindow.document.write(documentText);
 }
 
+function exportCSV(){
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const timings = [
+    '09:00-09:55',
+    '10:00-10:55',
+    '11:00-11:55',
+    '12:00-12:55',
+    '01:00-02:25',
+    '14:30-15:55',
+    '16:00-17:25',
+    '18:00-19:25',
+    '19:30-21:00',
+  ];
+  let items = [oneTwoSegmentTable, threeFourSegmentTable, fiveSixSegmentTable];
+  let csvText = "";
+  for (let i = 0; i < items.length; ++i) {
+	csvText += "Day," + timings.join(",") + "\n";
+	let timeTable = items[i];
+  	for (let j = 0; j < days.length; ++j){
+	    let day = days[j];
+	    schedule = timeTable[day];
+	    csvText  += day;
+	    for (let k = 0; k < timings.length; ++k) {
+	      let timing = timings[k];
+	      csvText += "," + (schedule[timing] !== undefined ? schedule[timing]: '');
+	    }
+	    csvText += '\n';
+	}
+  	csvText += '\n\n\n';
+  }
+  let downloadText = 'data:text/csv;charset=utf-8,' + csvText;
+  let encodedURI = encodeURI(downloadText);
+  let link = document.createElement('a');
+  link.setAttribute('href', encodedURI);
+  link.setAttribute('download', 'aims-time-table.csv');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 (function main() {
   const programs = $('.card-body');
   for (let i = 1; i < programs.length; ++i) {
@@ -298,4 +337,5 @@ function parseTable() {
     process(`.stdtDegReg_${regId}_3`);
   }
   parseTable();
+  exportCSV();
 }());
